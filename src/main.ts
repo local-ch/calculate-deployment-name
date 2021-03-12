@@ -1,18 +1,17 @@
 import * as core from '@actions/core'
-import {wait} from './wait'
+import calculate from './calculate'
 
 async function run(): Promise<void> {
   try {
-    const ms: string = core.getInput('milliseconds')
-    core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
+    const appName = core.getInput('app')
+    const branchName = core.getInput('branch')
+    const deploymentName = calculate(appName, branchName)
 
-    core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    core.debug(new Date().toTimeString())
-
-    core.setOutput('time', new Date().toTimeString())
+    core.debug('Successfully calculated deploymentName')
+    core.info(`Setting output 'name' to ${deploymentName}`)
+    core.setOutput('name', deploymentName)
   } catch (error) {
-    core.setFailed(error.message)
+    core.setFailed(error)
   }
 }
 

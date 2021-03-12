@@ -1,11 +1,13 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Calculate Deployment Name'
+description: 'Calculates valid deployment names based on repo name and branch name'
+author: 'localsearch'
 inputs:
-  milliseconds: # change this
+  app: # change this
     required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+    description: 'Application name (usually repo name)'
+  branch:
+    required: true
+    description: 'Name of the current branch'
 runs:
   using: 'node12'
   main: 'dist/index.js'
