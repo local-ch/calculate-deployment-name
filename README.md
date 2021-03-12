@@ -1,4 +1,4 @@
-# Calculate Deployment Name Action
+# Calculate Deployment Name
 
 Github Action to unify and centralize calculating deployment names for all
 github actions.
