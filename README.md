@@ -16,7 +16,7 @@ pattern of deployment names, no matter what stack they're written in.
 Basic:
 
 ```yaml
-- uses: localsearch/calculate-deployment-name-action@v1
+- uses: local-ch/calculate-deployment-name-action@v1
   with:
     app: ${{github.event.repository.name}}
     branch: ${{ github.head_ref }}
