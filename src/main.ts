@@ -3,8 +3,8 @@ import calculate from './calculate'
 
 async function run(): Promise<void> {
   try {
-    const appName = core.getInput('app-name')
-    const branchName = core.getInput('branch-name')
+    const appName = core.getInput('app')
+    const branchName = core.getInput('branch')
     const deploymentName = calculate(appName, branchName)
 
     core.debug('Successfully calculated deploymentName')
