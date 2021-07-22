@@ -1,14 +1,15 @@
 import {transliterate as tr, slugify} from 'transliteration'
 
 export default function calculate(appName: string, branchName: string): string {
-  let deploymentName = `${appName.toLowerCase()}-${branchName.toLowerCase()}`
-
-  deploymentName = deploymentName.substring(0, 50)
-  deploymentName = tr(deploymentName)
-  deploymentName = slugify(deploymentName, {
-    allowedChars: '-a-z0-9',
-    trim: true
-  })
+  // we want to have a limit of max 52 characters for deployment name (dictated by the limit of some k8s services (like CronJobs))
+  // setting here to 48 to account for stage prefix ('stg-' or 'prd-')
+  const deploymentName = slugify(
+    tr(`${appName.toLowerCase()}-${branchName.toLowerCase()}`.substring(0, 48)),
+    {
+      allowedChars: '-a-z0-9',
+      trim: true
+    }
+  )
 
   return deploymentName.replace(/^-+/, '').replace(/-+$/, '')
 }
