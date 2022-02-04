@@ -12,12 +12,12 @@ describe('Calculate', () => {
     expect(result).toMatch(/^[^äö]+$/)
   })
 
-  it('shortens deployment names to 48 characters', () => {
+  it('shortens deployment names to 47 characters', () => {
     const result = calculate(
       'long app name',
       'dependabot/npm_and_yarn/typescript-eslint/eslint-plugin-4.17.0'
     )
-    expect(result.length).toBe(48)
+    expect(result.length).toBe(47)
   })
 
   describe('slugification', () => {
