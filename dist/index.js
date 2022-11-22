@@ -1,7 +1,7 @@
 require('./sourcemap-register.js');/******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 796:
+/***/ 469:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -10,8 +10,8 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 const transliteration_1 = __nccwpck_require__(636);
 function calculate(appName, branchName) {
     // we want to have a limit of max 52 characters for deployment name (dictated by the limit of some k8s services (like CronJobs))
-    // setting here to 48 to account for stage prefix ('stg-' or 'prd-')
-    const deploymentName = transliteration_1.slugify(transliteration_1.transliterate(`${appName.toLowerCase()}-${branchName.toLowerCase()}`.substring(0, 48)), {
+    // setting here to 47 to account for stage prefix ('stg-' or 'prd-')
+    const deploymentName = (0, transliteration_1.slugify)((0, transliteration_1.transliterate)(`${appName.toLowerCase()}-${branchName.toLowerCase()}`.substring(0, 47)), {
         allowedChars: '-a-z0-9',
         trim: true
     });
@@ -22,14 +22,18 @@ exports["default"] = calculate;
 
 /***/ }),
 
-/***/ 109:
+/***/ 536:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
 
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -60,13 +64,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core = __importStar(__nccwpck_require__(186));
-const calculate_1 = __importDefault(__nccwpck_require__(796));
+const calculate_1 = __importDefault(__nccwpck_require__(469));
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const appName = core.getInput('app');
             const branchName = core.getInput('branch');
-            const deploymentName = calculate_1.default(appName, branchName);
+            const deploymentName = (0, calculate_1.default)(appName, branchName);
             core.debug('Successfully calculated deploymentName');
             core.info(`Setting output 'name' to ${deploymentName}`);
             core.setOutput('name', deploymentName);
@@ -3364,7 +3368,7 @@ module.exports = require("util");
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module is referenced by other modules so it can't be inlined
-/******/ 	var __webpack_exports__ = __nccwpck_require__(109);
+/******/ 	var __webpack_exports__ = __nccwpck_require__(536);
 /******/ 	module.exports = __webpack_exports__;
 /******/ 	
 /******/ })()
