@@ -10,8 +10,8 @@ async function run(): Promise<void> {
     core.debug('Successfully calculated deploymentName')
     core.info(`Setting output 'name' to ${deploymentName}`)
     core.setOutput('name', deploymentName)
-  } catch (error) {
-    core.setFailed(error)
+  } catch (error: unknown) {
+    core.setFailed(error as Error)
   }
 }
 
