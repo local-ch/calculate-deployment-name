@@ -1,6 +1,6 @@
 {
   "name": "calcualte-deployment-name",
-  "version": "1.0.3",
+  "version": "2.0.0",
   "private": true,
   "description": "Calculates valid deployment names based on repo name and branch name",
   "main": "lib/src/main.js",
