@@ -9,5 +9,5 @@ inputs:
     required: true
     description: 'Name of the current branch'
 runs:
-  using: 'node16'
+  using: 'node20'
   main: 'dist/index.js'
