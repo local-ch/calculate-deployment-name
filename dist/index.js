@@ -72,8 +72,8 @@ function run() {
             const branchName = core.getInput('branch');
             const deploymentName = (0, calculate_1.default)(appName, branchName);
             core.debug('Successfully calculated deploymentName');
-            core.info(`Setting output 'name' to ${deploymentName}`);
-            core.setOutput('name', deploymentName);
+            core.info(`Exporting DEPLOYMENT_NAME=${deploymentName}`);
+            core.exportVariable('DEPLOYMENT_NAME', deploymentName);
         }
         catch (error) {
             core.setFailed(error);
