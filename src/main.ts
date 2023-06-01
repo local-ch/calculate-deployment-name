@@ -8,7 +8,7 @@ async function run(): Promise<void> {
     const deploymentName = calculate(appName, branchName)
 
     core.debug('Successfully calculated deploymentName');
-    core.info(`Setting output 'name' to ${deploymentName}`);
+    core.info(`Exporting DEPLOYMENT_NAME=${deploymentName}`);
     core.exportVariable('DEPLOYMENT_NAME', deploymentName);
   } catch (error: unknown) {
     core.setFailed(error as Error)
