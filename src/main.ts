@@ -10,6 +10,7 @@ async function run(): Promise<void> {
     core.debug('Successfully calculated deploymentName')
     core.info(`Exporting DEPLOYMENT_NAME=${deploymentName}`)
     core.exportVariable('DEPLOYMENT_NAME', deploymentName)
+    core.setOutput('name', deploymentName)
   } catch (error: unknown) {
     core.setFailed(error as Error)
   }
